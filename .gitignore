@@ -11,4 +11,5 @@
 !*.glsl
 !*.txt
 !README.md
+!res/*
 
