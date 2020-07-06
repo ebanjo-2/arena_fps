@@ -23,9 +23,31 @@ namespace fps {
 
     void WorldRenderer::drawCuboid(Cuboid& c) {
 
-            MasterRenderer3D::s_forward_renderer->prepare();
-            MasterRenderer3D::s_forward_renderer->drawModel(c);
+
+        MasterRenderer3D::s_forward_renderer->drawModel(c);
+
+
     }
+
+    void WorldRenderer::drawWorld(World& w) {
+
+        MasterRenderer3D::s_forward_renderer->prepare();
+
+        for(CuboidInstance& c : w.m_cuboids) {
+
+            w.m_base_cuboid.setPosition(c.getPosition());
+            w.m_base_cuboid.setScale(c.getScale());
+
+
+            if(c.getTextureID() < w.m_textures.size()) {
+
+                w.m_base_cuboid.m_texture = w.m_textures.at(c.getTextureID());
+            }
+
+            drawCuboid(w.m_base_cuboid);
+        }
+    }
+
 
 
 } // fps

@@ -14,7 +14,6 @@ namespace fps {
             Cuboid();
             virtual ~Cuboid();
 
-
     };
 
 
