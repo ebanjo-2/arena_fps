@@ -14,6 +14,8 @@
 #include <world/cuboid.h>
 #include <world/world_renderer.h>
 
+#include <phyiscs/physics.h>
+
 
 
 using namespace undicht;
@@ -34,17 +36,21 @@ int main() {
 
         World first_map;
         first_map.m_textures.emplace_back(graphics::Texture());
-        //first_map.m_textures.back().setFilteringMethod(core::UND_LINEAR, core::UND_LINEAR);
 
         ImageFile image("res/tile_0.png");
         image.loadToTexture(first_map.m_textures.back());
+        first_map.m_textures.back().setFilteringMethod(core::UND_LINEAR, core::UND_LINEAR);
+
 
         first_map.addCuboid(CuboidInstance(glm::vec3(0,-3,0), glm::vec3( 10,.1,10)));
-        first_map.addCuboid(CuboidInstance(glm::vec3(5,0,-2), glm::vec3(0.5,6,6)));
-        first_map.addCuboid(CuboidInstance(glm::vec3(-5,-2,-4), glm::vec3(0.5,2,1)));
+        first_map.addCuboid(CuboidInstance(glm::vec3(1,-1,-2), glm::vec3(0.5,5,0.5)));
+        first_map.addCuboid(CuboidInstance(glm::vec3(0,1,-4), glm::vec3(2,2,2)));
 
 
         player.addTranslation(glm::vec3(1,0,2));
+
+        std::cout << Physics::cuboidCollision(first_map.m_cuboids.at(0).getPosition(), first_map.m_cuboids.at(0).getScale(),
+                                              first_map.m_cuboids.at(1).getPosition(), first_map.m_cuboids.at(1).getScale()) << "\n";
 
         while(!window->shouldClose()) {
 
@@ -56,6 +62,7 @@ int main() {
             MasterRenderer3D::endFrame();
 
             window->update();
+            player.update(first_map);
 
         }
 
