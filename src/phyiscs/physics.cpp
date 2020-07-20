@@ -1,4 +1,5 @@
 #include "physics.h"
+#include <iostream>
 
 namespace undicht {
 
@@ -30,7 +31,7 @@ namespace undicht {
     }
 
 
-    ///////////////////////////////////// functions to test for the collision between objects ////////////////////////////////////////
+    ////////////////////////////////// functions to test for the collision between mathematical objects ////////////////////////////////////////
 
 
     bool Physics::cuboidCollision(const glm::vec3& pos1, const glm::vec3& size1, const glm::vec3& pos2, const glm::vec3& size2) {
@@ -52,6 +53,20 @@ namespace undicht {
             }
         }
 
+        return false;
+    }
+
+
+    ////////////////////////////////////functions to test for the collision between hitboxes ////////////////////////////////////////
+
+    bool Physics::collision(Hitbox& h1, Hitbox& h2) {
+
+        if((h1.getType() == UND_CUBOID_HITBOX) && (h1.getType() == UND_CUBOID_HITBOX)) {
+
+            return cuboidCollision(h1.getWorldPosition(), h1.getWorldScale(), h2.getWorldPosition(), h2.getWorldScale());
+        }
+
+        // no known collision detection
         return false;
     }
 

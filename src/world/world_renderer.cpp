@@ -23,9 +23,7 @@ namespace fps {
 
     void WorldRenderer::drawCuboid(Cuboid& c) {
 
-
         MasterRenderer3D::s_forward_renderer->drawModel(c);
-
 
     }
 
@@ -41,7 +39,7 @@ namespace fps {
 
             if(c.getTextureID() < w.m_textures.size()) {
 
-                w.m_base_cuboid.m_texture = w.m_textures.at(c.getTextureID());
+                w.m_base_cuboid.m_child_models.at(0).setTexture(w.m_textures.at(c.getTextureID()));
             }
 
             drawCuboid(w.m_base_cuboid);

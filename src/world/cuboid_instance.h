@@ -4,12 +4,18 @@
 #include <glm/glm/glm.hpp>
 #include <3D/math/orientation_3d.h>
 
+#include <phyiscs/cuboid_hitbox.h>
+
+using namespace undicht;
+
 namespace fps {
 
     class CuboidInstance : public undicht::Orientation3D {
         public:
 
             unsigned int m_texture_id = 0;
+
+            CuboidHitbox m_hitbox;
 
             void setTextureID(unsigned int id);
             int getTextureID() const;

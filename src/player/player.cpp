@@ -15,11 +15,33 @@ namespace fps {
 
         m_key_input.setWindow(Engine::s_main_window);
         m_mouse_input.setWindow(Engine::s_main_window);
+
+        m_hitbox.setPosition(glm::vec3(0,-1,0));
+        m_hitbox.setScale(glm::vec3(0.5,2,0.5));
+
+        m_hitbox.setTransfRelTo(&m_center);
+        //m_hitbox.setTransfRelTo(this);
     }
 
     Player::~Player() {
         //dtor
     }
+
+
+    bool Player::checkCollision(World& world) {
+
+        m_center.setPosition(getPosition()); // reference position to the hitbox
+
+        for(CuboidInstance& c : world.m_cuboids) {
+
+            if(Physics::collision(m_hitbox, c.m_hitbox)) {
+
+                return true;
+            }
+
+        }
+    }
+
 
 
     void Player::update(World& world) {
@@ -28,7 +50,9 @@ namespace fps {
 
         m_mouse_input.updateCursorOffset();
 
+        // points to reset to if the collision test is positive
         glm::vec3 old_pos = getPosition();
+        glm::vec3 pos_after_user_input;
 
         // hiding / showing the cursor
         if(m_key_input.getKeyState(UND_KEY_E)) {
@@ -44,40 +68,71 @@ namespace fps {
 
                 m_movement_speed = 0.1;
             } else {
-                m_movement_speed = 0.01f;
+                m_movement_speed = 0.05f;
             }
 
             if(m_key_input.getKeyState(UND_KEY_S)) {
 
-                addTranslation(-1.0f * getViewDirection() * m_movement_speed);
+                addTranslation(-1.0f * glm::vec3(1,0,1) * getViewDirection() * m_movement_speed);
             }
 
             if(m_key_input.getKeyState(UND_KEY_W)) {
 
-                addTranslation(getViewDirection() * m_movement_speed);
+                addTranslation(glm::vec3(1,0,1) * getViewDirection() * m_movement_speed);
             }
 
             if(m_key_input.getKeyState(UND_KEY_A)) {
 
-                addTranslation(-1.0f * glm::normalize(glm::cross(getViewDirection(), glm::vec3(0,1,0))) * m_movement_speed);
+                addTranslation(-1.0f * glm::normalize(glm::vec3(1,0,1) * glm::cross(getViewDirection(), glm::vec3(0,1,0))) * m_movement_speed);
             }
 
             if(m_key_input.getKeyState(UND_KEY_D)) {
 
-                addTranslation(glm::normalize(glm::cross(getViewDirection(), glm::vec3(0,1,0))) * m_movement_speed);
+                addTranslation(glm::normalize(glm::vec3(1,0,1) * glm::cross(getViewDirection(), glm::vec3(0,1,0))) * m_movement_speed);
             }
+
+            if(m_key_input.getKeyState(UND_KEY_SPACE)) {
+                // jump
+                if((m_jumping_state < m_max_jump) && (m_jumping_state >= 0)) {
+
+                    addTranslation(glm::vec3(0, 0.2, 0));
+                    m_jumping_state += 0.1;
+                } // gravity will do the rest
+
+            }
+
+            if(m_jumping_state >= m_max_jump) {
+                m_jumping_state = -1;
+            }
+
+            pos_after_user_input = getPosition();
+
+            // adding "gravity"
+            addTranslation(glm::vec3(0,-0.1,0));
+
 
             // checking for collision
 
-            for(CuboidInstance& c : world.m_cuboids) {
+            bool collision_inbound = false;
 
-                if(Physics::cuboidCollision(getPosition() + m_hitbox_offset, m_hitbox_size, c.getPosition(), c.getScale())) {
+            collision_inbound = checkCollision(world);
 
-                    setPosition(old_pos);
-                    break;
-                }
+            // checking for collision again, this time without gravity
+
+            if(collision_inbound) {
+
+                m_jumping_state = 0.0; // on floor
+                setPosition(pos_after_user_input);
+
+                collision_inbound = checkCollision(world);
 
             }
+
+            if(collision_inbound) {
+
+                setPosition(old_pos);
+            }
+
 
 
             // changing view direction
@@ -106,4 +161,4 @@ namespace fps {
 
     }
 
-    } // fps
+} // fps
