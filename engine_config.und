@@ -1,0 +1,34 @@
+<?xml info="not_following_any_specific_xml_version"?>
+<engine>
+	<info> an example of an engine config (which is also the default config for the undicht engine) </info>
+	<info> its logic and structure may evolve a lot or it may be abandoned </info>
+	<core_libraries>
+		<info> filepaths are relative to the config files location </info>
+	 	<UND_WINDOWS>
+	   		<window_lib>undicht_0.37_engine/undicht_core/implementation/window/glfw/window_glfw.dll</window_lib>
+			<graphics_lib>undicht_0.37_engine/undicht_core/implementation/graphics/opengl_33/video_opengl_33.dll</graphics_lib>
+			<audio_lib>undicht_0.37_engine/undicht_core/implementation/audio/openal/audio_openal.dll</audio_lib>
+			<file_lib>undicht_0.37_engine/undicht_core/implementation/file/fstream/fstream_file.dll</file_lib>
+		</UND_WINDOWS>
+		<UND_UNIX>
+			<window_lib>undicht_0.37_engine/undicht_core/implementation/window/glfw/libwindow_glfw.so</window_lib>
+			<graphics_lib>undicht_0.37_engine/undicht_core/implementation/graphics/opengl_33/libvideo_opengl_33.so</graphics_lib>
+			<audio_lib>undicht_0.37_engine/undicht_core/implementation/audio/openal/libaudio_openal.so</audio_lib>
+			<file_lib>undicht_0.37_engine/undicht_core/implementation/file/fstream/libfstream_file.so</file_lib>
+		</UND_UNIX>
+	</core_libraries>
+	<Rendering>
+		<_3D>
+			<SimpleForward>
+				<info> a very simple 3D renderer used mainly for development and debugging </info>
+				<init_from>src/world/world_shader.glsl</init_from>
+				<enable_depth_test>true</enable_depth_test>
+				<cull_back_face>false</cull_back_face>
+			</SimpleForward>
+		</_3D>
+	</Rendering>
+</engine>
+
+
+
+

@@ -20,7 +20,10 @@ namespace fps {
             void setTextureID(unsigned int id);
             int getTextureID() const;
 
+            void operator= (const CuboidInstance& o);
+
             CuboidInstance();
+            CuboidInstance(const CuboidInstance& o);
             CuboidInstance(const glm::vec3& position, const glm::vec3& scale = glm::vec3(1,1,1), unsigned int texture = 0);
             virtual ~CuboidInstance();
 

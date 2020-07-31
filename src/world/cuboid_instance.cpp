@@ -8,6 +8,13 @@ namespace fps {
         m_hitbox.setTransfRelTo(this);
     }
 
+    CuboidInstance::CuboidInstance(const CuboidInstance& o) {
+
+        *this = o;
+
+    }
+
+
     CuboidInstance::CuboidInstance(const glm::vec3& position, const glm::vec3& scale, unsigned int texture) {
 
         setTextureID(texture);
@@ -16,6 +23,18 @@ namespace fps {
 
         m_hitbox.setTransfRelTo(this);
     }
+
+    void CuboidInstance::operator= (const CuboidInstance& o) {
+
+        setPosition(o.getPosition());
+        setScale(o.getScale());
+
+        m_texture_id = o.m_texture_id;
+        m_hitbox = o.m_hitbox;
+
+        m_hitbox.setTransfRelTo(this);
+    }
+
 
     CuboidInstance::~CuboidInstance() {
         //dtor
