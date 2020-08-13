@@ -52,12 +52,23 @@ int main() {
         image.loadToTexture(first_map.m_textures.at(1));
         first_map.m_textures.back().setFilteringMethod(core::UND_NEAREST, core::UND_NEAREST);
 
+        first_map.m_textures.emplace_back(graphics::Texture());
+        image.open("res/wood_box.png");
+        image.loadToTexture(first_map.m_textures.at(2));
+        first_map.m_textures.back().setFilteringMethod(core::UND_NEAREST, core::UND_NEAREST);
+
+        first_map.m_textures.emplace_back(graphics::Texture());
+        image.open("res/bricks.png");
+        image.loadToTexture(first_map.m_textures.at(3));
+        first_map.m_textures.back().setFilteringMethod(core::UND_NEAREST, core::UND_NEAREST);
+
 
         first_map.addCuboid(CuboidInstance(glm::vec3(0,-3,0), glm::vec3( 15,.1,15), 1));
-        first_map.addCuboid(CuboidInstance(glm::vec3(1,-1.5,-2), glm::vec3(0.5,3,0.5)));
-        first_map.addCuboid(CuboidInstance(glm::vec3(2,-2,-4), glm::vec3(2,2,2)));
-        first_map.addCuboid(CuboidInstance(glm::vec3(0,-2.5,-4), glm::vec3(1,1,1), 1));
-        first_map.addCuboid(CuboidInstance(glm::vec3(0.1,0,0.1), glm::vec3(3,0.1,3)));
+        first_map.addCuboid(CuboidInstance(glm::vec3(1,-2.5,-2), glm::vec3(0.5,5,0.5)));
+        first_map.addCuboid(CuboidInstance(glm::vec3(2,-2,-4), glm::vec3(2,2,2),3));
+        first_map.addCuboid(CuboidInstance(glm::vec3(0,-2.5,-4), glm::vec3(1,1,1), 2));
+        first_map.addCuboid(CuboidInstance(glm::vec3(0.1,0,0.1), glm::vec3(3,0.1,3),2));
+        first_map.addCuboid(CuboidInstance(glm::vec3(7.25,1.5,0), glm::vec3(0.5,3,3),3));
 
 
         player.addTranslation(glm::vec3(1,5,1));

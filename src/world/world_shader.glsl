@@ -14,7 +14,8 @@ uniform vec3 scale;
 
 void main() {
 
-	uv = length(scale - aNormal * scale) * aUv; // not quite right
+    vec3 norm = normalize(aNormal);
+    uv = aUv * (norm.x * scale.zy + norm.y * scale.xz + norm.z * scale.xy);
 
 	gl_Position = proj * view * model * vec4(aPos * scale, 1.0f);
 }
