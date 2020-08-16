@@ -25,9 +25,12 @@ namespace undicht {
             static bool cuboidCollision(const glm::vec3& pos1, const glm::vec3& size1, const glm::vec3& pos2, const glm::vec3& size2);
 
         public:
-            /** functions to test for the collision between hitboxes */
+            /** functions to test for the collision between stationary hitboxes */
 
             static bool collision(Hitbox& h1, Hitbox& h2);
+
+        public:
+
 
             Physics();
             virtual ~Physics();

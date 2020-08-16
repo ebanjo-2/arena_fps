@@ -1,0 +1,16 @@
+<?xml info="not_following_any_specific_xml_version"?>
+<world>
+  <textures>
+	<image>tile_0.png</image>
+	<image>tile_1.png</image>
+	<image>wood_box.png</image>
+	<image>bricks.png</image>
+  </textures>
+  <geometry>
+	<info> vec3 position followed by vec3 size </info>
+	<block texture=1>0 -3 0 15 .1 15</block>
+	<block texture=0>1 -2.5 -2 0.5 5 0.5</block>
+	<block texture=3>2 -2 -4 2 2 2</block>
+	<block texture=2>0 -2.5 -4 1 1 1</block>
+  </geometry>
+</world>
