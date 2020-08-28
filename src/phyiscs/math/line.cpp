@@ -17,7 +17,7 @@ namespace undicht {
 
     /////////////////////////////////////// defining the line ///////////////////////////////////////
 
-    Line::def(const glm::vec3& point, const glm::vec3& dir) {
+    void Line::def(const glm::vec3& point, const glm::vec3& dir) {
         /** defined by a point on the line + the positive direction of the line */
 
         m_point = point;

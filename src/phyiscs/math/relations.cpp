@@ -28,6 +28,25 @@ namespace undicht {
         /** @return whether the line and the plane intersect at a single point
         * @param point: where they intersect */
 
+        float x;
+        bool intersec = intersecPlaneLine(plane, line, x);
+
+        if(!intersec) {
+
+            return false;
+        }
+
+        point = line.getPoint() + line.getDir() * x;
+
+        return true;
+    }
+
+
+    bool intersecPlaneLine(const Plane& plane, const Line& line, float& dir_factor) {
+        /** @return whether the line and the plane intersect at a single point
+        @param dir_factor: the factor with which the direction vector of the line has to be multiplied
+        * to get from the lines base point to the intersection whith the polygons plane */
+
         if(glm::dot(line.getDir(), plane.getNormal()) == 0) {
             // parallel, no or infinite shared points
             return false;
@@ -39,9 +58,7 @@ namespace undicht {
         // (n * ld) * x = (pp * n - n * ls)
         // x = (pp * n - n * ls) / (n * ld); right?
 
-        float x = (glm::dot(plane.getPoint(), plane.getNormal()) - glm::dot(plane.getNormal(), line.getPoint())) / glm::dot(plane.getNormal(), line.getDir());
-
-        point = line.getPoint() + line.getDir() * x;
+        dir_factor = (glm::dot(plane.getPoint(), plane.getNormal()) - glm::dot(plane.getNormal(), line.getPoint())) / glm::dot(plane.getNormal(), line.getDir());
 
         return true;
     }

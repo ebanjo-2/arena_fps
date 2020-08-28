@@ -19,7 +19,7 @@ namespace undicht {
             // defining the line
 
             /** defined by a point on the line + the positive direction of the line */
-            def(const glm::vec3& point, const glm::vec3& dir);
+            void def(const glm::vec3& point, const glm::vec3& dir);
 
         public:
             // getting the defining attributes of the line
