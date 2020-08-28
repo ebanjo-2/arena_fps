@@ -1,4 +1,5 @@
 #include "hitbox_polygon.h"
+#include <physics/math/relations.h>
 
 
 namespace undicht {

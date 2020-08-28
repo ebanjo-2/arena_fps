@@ -3,8 +3,8 @@
 
 
 #include <glm/glm/glm.hpp>
-#include <phyiscs/hitbox.h>
-#include <phyiscs/cuboid_hitbox.h>
+#include <physics/hitbox.h>
+#include <physics/cuboid_hitbox.h>
 
 
 namespace undicht {

@@ -1,7 +1,7 @@
 #include "player.h"
 #include <engine/engine.h>
 #include <window/key_ids.h>
-#include <phyiscs/physics.h>
+#include <physics/physics.h>
 
 
 using namespace undicht;

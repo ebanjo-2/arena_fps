@@ -16,9 +16,9 @@
 #include <world/cuboid.h>
 #include <world/world_renderer.h>
 
-#include <phyiscs/physics.h>
+#include <physics/physics.h>
 
-#include <phyiscs/math/relations.h>
+#include <physics/math/relations.h>
 
 
 

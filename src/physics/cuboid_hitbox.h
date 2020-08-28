@@ -2,7 +2,7 @@
 #define CUBOID_HITBOX_H
 
 
-#include <phyiscs/hitbox.h>
+#include <physics/hitbox.h>
 
 namespace undicht {
 
