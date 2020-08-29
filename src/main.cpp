@@ -16,9 +16,9 @@
 #include <world/cuboid.h>
 #include <world/world_renderer.h>
 
-#include <physics/physics.h>
+#include <3D/physics/physics.h>
 
-#include <physics/math/relations.h>
+#include <3D/math/relations.h>
 
 
 
@@ -31,9 +31,10 @@ int main() {
 
     std::string file_path = core::getFilePath(UND_CODE_SRC_FILE, 1);
 
+    std::cout << file_path << "\n";
+
     Engine::initialize(file_path + "engine_config.und");
 
-    std::cout << file_path + "engine_config.und" << "\n";
 
     {
 

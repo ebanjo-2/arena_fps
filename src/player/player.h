@@ -8,7 +8,7 @@
 
 #include <world/world.h>
 
-#include <physics/cuboid_hitbox.h>
+#include <3D/physics/hitboxes/cuboid_hitbox.h>
 
 using namespace undicht;
 

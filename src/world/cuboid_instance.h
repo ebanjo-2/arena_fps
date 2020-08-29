@@ -4,7 +4,7 @@
 #include <glm/glm/glm.hpp>
 #include <3D/math/orientation_3d.h>
 
-#include <physics/cuboid_hitbox.h>
+#include <3D/physics/hitboxes/cuboid_hitbox.h>
 
 using namespace undicht;
 
