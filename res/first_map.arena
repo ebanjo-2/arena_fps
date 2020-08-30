@@ -8,9 +8,10 @@
   </textures>
   <geometry>
 	<info> vec3 position followed by vec3 size </info>
-	<block texture=1>0 -3 0 15 .1 15</block>
-	<block texture=0>1 -2.5 -2 0.5 5 0.5</block>
-	<block texture=3>2 -2 -4 2 2 2</block>
-	<block texture=2>0 -2.5 -4 1 1 1</block>
+	<block texture=0>1 0 0 10 1 10</block>
+	<//block texture=1>0 -3 0 15 .1 15</block>
+	<//block texture=0>1 -2.5 -2 0.5 5 0.5</block>
+	<//block texture=3>2 -2 -4 2 2 2</block>
+	<//block texture=2>0 -2.5 -4 1 1 1</block>
   </geometry>
 </world>

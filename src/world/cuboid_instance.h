@@ -5,6 +5,7 @@
 #include <3D/math/orientation_3d.h>
 
 #include <3D/physics/hitboxes/cuboid_hitbox.h>
+#include <3D/physics/hitboxes/polygon_hitbox.h>
 
 using namespace undicht;
 
@@ -15,7 +16,8 @@ namespace fps {
 
             unsigned int m_texture_id = 0;
 
-            CuboidHitbox m_hitbox;
+            //CuboidHitbox m_hitbox;
+            PolygonHitbox m_hitbox;
 
             void setTextureID(unsigned int id);
             int getTextureID() const;

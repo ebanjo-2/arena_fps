@@ -9,6 +9,7 @@
 #include <world/world.h>
 
 #include <3D/physics/hitboxes/cuboid_hitbox.h>
+#include <3D/physics/hitboxes/polygon_hitbox.h>
 
 using namespace undicht;
 
@@ -28,7 +29,8 @@ namespace fps {
             glm::vec3 m_hitbox_offset = glm::vec3(0,-0.5,0);
 
             Orientation3D m_center; // reference point to the hitbox, doesnt get rotated
-            CuboidHitbox m_hitbox;
+            //CuboidHitbox m_hitbox;
+            PolygonHitbox m_hitbox;
 
             undicht::window::KeyInputWatcher m_key_input;
             undicht::window::MouseInputWatcher m_mouse_input;

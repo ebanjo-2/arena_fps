@@ -2,6 +2,7 @@
 #include <engine/engine.h>
 #include <window/key_ids.h>
 #include <3D/physics/physics.h>
+#include <3D/file_loading/collada/collada_file.h>
 
 
 using namespace undicht;
@@ -20,6 +21,10 @@ namespace fps {
         m_hitbox.setScale(glm::vec3(0.5,2,0.5));
 
         m_hitbox.setTransfRelTo(&m_center);
+
+        ColladaFile f("res/cube.dae");
+        f.loadHitbox(m_hitbox);
+
         //m_hitbox.setTransfRelTo(this);
     }
 

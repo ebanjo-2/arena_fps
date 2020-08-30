@@ -4,6 +4,9 @@
 #include <core/core.h>
 #include <engine/engine.h>
 #include <3D/master_renderer_3d.h>
+#include <3D/file_loading/collada/collada_file.h>
+
+#include <3D/physics/collision_detection.h>
 
 #include <core/types.h>
 #include <core/string_tools.h>
@@ -48,18 +51,9 @@ int main() {
         WorldFile map_file("res/first_map.arena");
         map_file.loadWorld(first_map);
 
-
-        player.addTranslation(glm::vec3(1,5,1));
+        player.addTranslation(glm::vec3(0.1,5,0));
 
         double start_time;
-
-        glm::vec3 point;
-        Plane plane(glm::vec3(0,1,0), glm::vec3(0,1,0));
-        Line line(glm::vec3(1,0,0), glm::vec3(1,1,0));
-
-        std::cout << "intersection: " << intersecPlaneLine(plane, line, point) << "\n";
-        std::cout << point.x << " " << point.y << " " << point.z << "\n";
-
 
         while(!window->shouldClose()) {
 
@@ -75,7 +69,7 @@ int main() {
             window->update();
             player.update(first_map);
 
-            std::cout << "fps: " << 1 / (core::Core::getTime() - start_time) << "\n";
+            //std::cout << "fps: " << 1 / (core::Core::getTime() - start_time) << "\n";
 
         }
 
