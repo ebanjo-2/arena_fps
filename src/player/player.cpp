@@ -20,10 +20,12 @@ namespace fps {
         m_hitbox.setPosition(glm::vec3(0,-1,0));
         m_hitbox.setScale(glm::vec3(0.5,2,0.5));
 
-        m_hitbox.setTransfRelTo(&m_center);
-
         ColladaFile f("res/cube.dae");
         f.loadHitbox(m_hitbox);
+
+        m_hitbox.setTransfRelTo(&m_center);
+
+
 
         //m_hitbox.setTransfRelTo(this);
     }

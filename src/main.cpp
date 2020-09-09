@@ -29,6 +29,21 @@ using namespace undicht;
 using namespace core;
 using namespace fps;
 
+class TestChild : public Orientation3D {
+
+};
+
+class TestParent : public Orientation3D {
+
+    public:
+
+        TestChild m_child;
+
+        TestParent(int x) {
+            setPosition(glm::vec3(x,x,x));
+            m_child.setTransfRelTo(this);
+        }
+};
 
 int main() {
 
@@ -51,7 +66,9 @@ int main() {
         WorldFile map_file("res/first_map.arena");
         map_file.loadWorld(first_map);
 
-        player.addTranslation(glm::vec3(0.1,5,0));
+        player.addTranslation(glm::vec3(-3,5,-3));
+
+
 
         double start_time;
 
