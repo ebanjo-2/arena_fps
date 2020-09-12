@@ -29,21 +29,6 @@ using namespace undicht;
 using namespace core;
 using namespace fps;
 
-class TestChild : public Orientation3D {
-
-};
-
-class TestParent : public Orientation3D {
-
-    public:
-
-        TestChild m_child;
-
-        TestParent(int x) {
-            setPosition(glm::vec3(x,x,x));
-            m_child.setTransfRelTo(this);
-        }
-};
 
 int main() {
 
