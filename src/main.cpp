@@ -44,6 +44,16 @@ int main() {
         window::Window* window = Engine::s_main_window;
         window->setTitle("Trying to build an arena fps using undicht 0.37");
 
+        PolygonHitbox h1;
+        PolygonHitbox h2;
+
+        h1.addPolygon(HitboxPolygon({glm::vec3(1,0,0), glm::vec3(-1,0,0), glm::vec3(0,0,1)}));
+        h2.addPolygon(HitboxPolygon({glm::vec3(0,1,0), glm::vec3(0,-1,0), glm::vec3(0,0,1)}));
+
+        bool collision = h1.collision(h2);
+
+        std::cout << "collision: " << collision << "\n";
+
         Player player;
 
         World first_map;
