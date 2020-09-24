@@ -114,7 +114,12 @@ namespace fps {
                 m_jumping_state = -1;
             }
 
-            pos_after_user_input = getPosition();
+            if(checkCollision(world)) {
+
+                std::cout << "collision!!!!!!!!!!111111111!!!" << "\n";
+            }
+
+            /*pos_after_user_input = getPosition();
 
             // adding "gravity"
             addTranslation(glm::vec3(0,-0.1,0));
@@ -140,7 +145,7 @@ namespace fps {
             if(collision_inbound) {
 
                 setPosition(old_pos);
-            }
+            }*/
 
 
 
