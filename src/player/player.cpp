@@ -160,6 +160,8 @@ namespace fps {
                 offset_y = 0;
             }
 
+
+
             // adding pitch
             glm::vec3 pitch_axis = glm::normalize(glm::cross(getViewDirection(), glm::vec3(0,1,0)));
             glm::quat rotation = glm::angleAxis(offset_y * m_mouse_speed, pitch_axis) * getRotation();

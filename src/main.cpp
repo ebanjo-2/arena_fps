@@ -187,17 +187,13 @@ int main() {
 
             MasterRenderer3D::newFrame();
 
-            /*draw(glm::vec3(0,2,0));
-            draw(x_axis);
-            draw(y_axis);
-            draw(z_axis);
 
-            draw(ray);*/
 
-            MasterRenderer3D::s_sketch_renderer->drawSphere(glm::vec3(2,2,0), glm::vec3(0.8), 1);
-            MasterRenderer3D::s_sketch_renderer->drawRay(x_axis, x_axis.getDir());
-            MasterRenderer3D::s_sketch_renderer->drawRay(y_axis, y_axis.getDir());
-            MasterRenderer3D::s_sketch_renderer->drawRay(z_axis, z_axis.getDir());
+            MasterRenderer3D::s_sketch_renderer->setDrawColor(glm::vec3(0.3,0.7,0.2))->drawSphere(glm::vec3(2,2,0), 1);
+            MasterRenderer3D::s_sketch_renderer->setDrawColor(x_axis.getDir())->drawRay(x_axis);
+            MasterRenderer3D::s_sketch_renderer->setDrawColor(y_axis.getDir())->drawRay(y_axis);
+            MasterRenderer3D::s_sketch_renderer->setDrawColor(z_axis.getDir())->drawRay(z_axis);
+            MasterRenderer3D::s_sketch_renderer->drawRay(ray);
 
 
 
