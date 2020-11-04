@@ -114,40 +114,6 @@ namespace fps {
                 m_jumping_state = -1;
             }
 
-            if(checkCollision(world)) {
-
-                std::cout << "collision!!!!!!!!!!111111111!!!" << "\n";
-            }
-
-            /*pos_after_user_input = getPosition();
-
-            // adding "gravity"
-            addTranslation(glm::vec3(0,-0.1,0));
-
-
-            // checking for collision
-
-            bool collision_inbound = false;
-
-            collision_inbound = checkCollision(world);
-
-            // checking for collision again, this time without gravity
-
-            if(collision_inbound) {
-
-                m_jumping_state = 0.0; // on floor
-                setPosition(pos_after_user_input);
-
-                collision_inbound = checkCollision(world);
-
-            }
-
-            if(collision_inbound) {
-
-                setPosition(old_pos);
-            }*/
-
-
 
             // changing view direction
             float offset_x, offset_y;
